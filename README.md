@@ -14,6 +14,7 @@
 Create a `MenuItem` object which has the following properties:
 
 1) a name, which can change
+
 2) a recipe, which is really just a dictionary of ingredients (strings) as keys and the associated amount of that ingredient needed as values.
 
 Neither the name or recipe for a `MenuItem` can ever be nil.
@@ -25,10 +26,15 @@ Write a designated initializer for a MenuItem.
 Create a `Restaurant` class which has the following properties:
 
 1) the `name` of the restaurant
+
 2) the `cuisine` of the restaurant
+
 3) the `supplies` on hand at the restaurant, which is a `Dictionary` of ingredients (strings) as keys and their amounts as values
+
 4) the `owner` of the restaurant, which is a `Person` object
+
 5) the `menu` for the restaurant 
+
 6) the restaurants current list of `orders`, which even if there are none should exist. This is a dictionary where the key is the table number and the value is an array of `MenuItem` objects.
 
 Only the `menu` of the restaurant can ever be `nil`, since some restaurants don't have menus.
@@ -46,8 +52,11 @@ Now write methods that do the following:
 Create a `Person` object which has the following properties:
 
 1) the person's `name`
+
 2) the person's `cuisinePreferences` (an `Array` of `String` objects)
+
 3) the person's `restaurantOwned` (a `Restaurant` if they own one)
+
 
 `restaurantOwned` may be nil.
 
@@ -90,24 +99,28 @@ Jerry would like to go to Alice's Restaurant
 
 Their menu includes:
 1) Grilled Cheese
+
 2) Vegetable Soup
 
 George would like to go to Tom's Restaurant
 
 Their menu includes:
 1) Tuna on Toast
+
 2) Pea Soup
 
 Since Tom own's Tom's Restaurant, we are obviously going there.
 
 Their menu includes:
 1) Tuna on Toast
+
 2) Pea Soup
 
 Since Alice own's Alice's Restaurant, we are obviously going there.
 
 Their menu includes:
 1) Grilled Cheese
+
 2) Vegetable Soup
 
 Newman doesn't care where we go.
