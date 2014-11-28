@@ -17,31 +17,56 @@ class Restaurant: NSObject {
     var menu = [MenuItem:Double]?()
     var orders = [Int:[MenuItem]]()
     
-    x   
     init(name: String, cuisine: String, owner: Person) {
         self.name = name
         self.cuisine = cuisine
         self.owner = owner
-
+        
     }
     
-    func make(Order: [MenuItem]) {
+    func makeOrderFor(table: Int) -> [MenuItem]? {
         
-        for menuItem in Order {
-            for (ingredient, amount) in menuItem.recipe {
+        var completedOrder : [MenuItem]?
+        
+        if let tempOrder = orders[table] {
+            for menuItem in tempOrder {
                 
-                if var tempSupply = supplies[ingredient] {
+                var completedMakingItem = true
 
-                    if tempSupply - amount < 0 {
-                        supplies.removeValueForKey(ingredient)
+                for (ingredient, amount) in menuItem.recipe {
+                    if var tempSupply = supplies[ingredient] {
+                        
+                        if tempSupply - amount < 0 {
+                            
+                            supplies.removeValueForKey(ingredient)
+                            completedMakingItem = false
+                            
+                        }
+                        else {
+                            tempSupply -= amount
+                            supplies[ingredient] = tempSupply
+                        }
+                    }
+                }
+                
+                if completedMakingItem {
+                    
+                    if var tempCompletedOrder = completedOrder {
+                        tempCompletedOrder.append(menuItem)
                     }
                     else {
-                        tempSupply -= amount
-                        supplies[ingredient] = tempSupply
+                        completedOrder = [MenuItem]()
+                        completedOrder?.append(menuItem)
                     }
+                }
+               
+                else {
+                    println("We are all out of the ingredients to make \(menuItem.name). You may wish to order something else.")
                 }
             }
         }
+        
+        return completedOrder
     }
     
     
@@ -51,10 +76,18 @@ class Restaurant: NSObject {
         
         for myFood in order {
             if let tempMenu = menu {
+                
+                var weServeIt = false
+
                 for (item,price) in tempMenu {
                     if (item.name == myFood) {
                         tableOrder.append(item)
+                        weServeIt = true
                     }
+                }
+                
+                if weServeIt == false {
+                    println("Sorry, we don't serve \(myFood)")
                 }
             }
         }
@@ -62,12 +95,4 @@ class Restaurant: NSObject {
         orders[tableNumber] = tableOrder;
     }
     
-    func serve(table : Int) {
-        if let order = orders[table] {
-            for item in order {
-                println(item.name)
-            }
-            
-        }
-    }
 }

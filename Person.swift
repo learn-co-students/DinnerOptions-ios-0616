@@ -25,10 +25,12 @@ class Person: NSObject {
         self.init(name: name, cuisinePreferences: nil)
     }
     
-    func choose(placeToEat:[Restaurant]) {
+    func choose(placeToEat:[Restaurant]) -> Restaurant? {
         
         if let tempRestaurantOwned = restaurantOwned {
-            println(tempRestaurantOwned.name)
+            println("Since \(self.name) own's \(tempRestaurantOwned.name), we are obviously going there.")
+            println()
+            return tempRestaurantOwned
         }
             
         else {
@@ -36,21 +38,29 @@ class Person: NSObject {
             var hasPreference = false
             
             if let tempCuisinePreferences = cuisinePreferences {
+                
                 for aRestaurant in placeToEat {
                     for preference in tempCuisinePreferences {
                         if preference == aRestaurant.cuisine {
-                            println("I would like to go to " + aRestaurant.name)
-                            hasPreference = true
-                            break
+                            println("\(self.name) would like to go to " + aRestaurant.name)
+                            println()
+                            return aRestaurant
                         }
                     }
-                    break
                 }
+                
+                println("\(self.name) can't find a restaurant that fits his or her preferences.")
+                println()
+                return nil
             }
-            
-            if hasPreference == false {
-                println("\(self.name) has no preferences.")
+            else
+            {
+                println("\(self.name) doesn't care where we go to eat.")
+                println()
+
             }
         }
+        return nil
     }
+    
 }

@@ -15,17 +15,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var people = [Person]()
     var restaurants = [Restaurant]()
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.generateTestData()
         
+        for person in self.people {
+            let restaurant = checkMenuForPreferredRestaurantOf(person)
+        }
         
+        
+        var table10Order = ["Pea Soup", "Pea Soup", "Pea Soup", "Pea Soup", "Grilled Cheese", "Tuna on Toast"]
+        var table5Order = ["Vegetable Soup", "Vegetable Soup", "Grilled Cheese"]
+        var table2Order = ["Grilled Cheese", "Grilled Cheese"]
+        var table3Order = ["Grilled Cheese", "Vegetable Soup", "Vegetable Soup", "Vegetable Soup"]
+        
+        let restaurant = restaurants[1]
+        
+        restaurant.place(table10Order, tableNumber: 10)
+        restaurant.place(table5Order, tableNumber: 5)
+        restaurant.place(table2Order, tableNumber: 2)
+        restaurant.place(table3Order, tableNumber: 3)
+        
+        restaurant.makeOrderFor(10)
+        restaurant.makeOrderFor(5)
+        restaurant.makeOrderFor(2)
+        
+        if let cheeseSupply = restaurant.supplies["Cheese"] {
+            restaurant.supplies["Cheese"] = cheeseSupply + 2
+        }
+        
+        restaurant.makeOrderFor(3)
         
         // Override point for customization after application launch.
         return true
     }
 
+    func checkMenuForPreferredRestaurantOf(Diner : Person) -> Restaurant? {
+        
+       let restaurant = Diner.choose(self.restaurants);
+    
+        if let menu = restaurant?.menu {
+            println("Their menu includes:")
+            var count = 0
+            for (item, price) in menu {
+                count++
+                println("\(count)) " + item.name)
+            }
+            println()
+        }
+        
+        return restaurant
+    }
     
     func generateTestData() {
         
@@ -38,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let alicesRestaurant = Restaurant(name: "Alice's Restaurant", cuisine: "American", owner: alice)
         
         alicesRestaurant.supplies = ["Cheese": 10, "Bread": 7, "Beefstake Tomato": 9, "White Onion" : 3, "8 oz can lima beans" : 3, "Idaho Potato" : 10, "Garlic clove" : 16];
-        
+        alice.restaurantOwned = alicesRestaurant        
         alicesRestaurant.menu = alicesMenu
         
         var tom = Person(name: "Tom")
@@ -48,7 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var peaSoup = MenuItem(name: "Pea Soup", recipe: ["Peas": 1, "Soup" : 2])
         
         let tomsRestaurant = Restaurant(name: "Tom's Restaurant", cuisine: "Coffee", owner: tom)
-
+        
+        tom.restaurantOwned = tomsRestaurant
         var tomsMenu = [tunaSandwich: 10.99, peaSoup: 5.99]
         
         tomsRestaurant.menu = tomsMenu
@@ -61,7 +103,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var elaine = Person(name: "Elaine", cuisinePreferences: ["Spanish", "French"])
         
-        self.people = [elaine, jerry, george, tom, alice]
+        var newman = Person(name: "Newman")
+        
+        self.people = [elaine, jerry, george, tom, alice, newman]
         self.restaurants = [tomsRestaurant, alicesRestaurant]
         
     }
