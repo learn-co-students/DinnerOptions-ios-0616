@@ -9,6 +9,7 @@
 
 ## Instructions
 
+
 ####Part 1
 
 Create a `MenuItem` object which has the following properties:
@@ -19,7 +20,9 @@ Create a `MenuItem` object which has the following properties:
 
 Neither the name or recipe for a `MenuItem` can ever be nil.
 
-Write a designated initializer for a MenuItem. 
+Write a designated initializer for a MenuItem.
+
+
 
 ####Part 2
 
@@ -46,6 +49,8 @@ Now write methods that do the following:
 2) Place an order. This method should take an `array` of `string` objects (the order as given by the customer) and a `tableNumber` and add the completed `order` to the `orders` property. It should only add to the order if what was requested is on the restaurant's menu.
 
 3) Make an order. This method should take a table number as an argument. It should look for the associated order placed for that table in the `orders` dictionary, and return the completed order (an `array` of `menuItem` objects), assuming that the restaurant has all of the necessary ingredients on hand to make the order. If the restaurant does not have the necessary amount of ingredients on hand to cook a specific `menuItem` ordered, it should return a partially completed order, and print in our console the `menuItem` objects for which it did not have the full ingredients on hand to make.
+
+
 
 ####Part 3
 
@@ -82,6 +87,8 @@ This class should also include the following methods.
 -- And if a person does not have any cuisine preferences, the function will return nil, and print something along the following lines in our console:
 
 "Newman doesn't care where we go to eat."
+
+
 
 ###Part 4
 
