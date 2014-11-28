@@ -90,7 +90,7 @@ This class should also include the following methods.
 
 
 
-###Part 4
+####Part 4
 
 Finally, you will write a function where you see fit that will `displayMenuForPreferredRestaurantOfDiner`. This function will take a `Person` object as an argument. It will have them choose a restaurant and then print the menu of this restaurant in the console, if they choose one.
 
