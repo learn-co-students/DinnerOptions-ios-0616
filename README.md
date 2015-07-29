@@ -1,7 +1,4 @@
----
-  tags: arrays, dictionaries, optionals, conditionals, loops
-  languages: swift
----
+
 
 # Dinner Options
 
