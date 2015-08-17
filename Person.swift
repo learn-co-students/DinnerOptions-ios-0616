@@ -28,35 +28,33 @@ class Person: NSObject {
     func choose(placeToEat:[Restaurant]) -> Restaurant? {
         
         if let tempRestaurantOwned = restaurantOwned {
-            println("Since \(self.name) own's \(tempRestaurantOwned.name), we are obviously going there.")
-            println()
+            print("Since \(self.name) own's \(tempRestaurantOwned.name), we are obviously going there.")
+            print("")
             return tempRestaurantOwned
         }
             
         else {
-            
-            var hasPreference = false
             
             if let tempCuisinePreferences = cuisinePreferences {
                 
                 for aRestaurant in placeToEat {
                     for preference in tempCuisinePreferences {
                         if preference == aRestaurant.cuisine {
-                            println("\(self.name) would like to go to " + aRestaurant.name)
-                            println()
+                            print("\(self.name) would like to go to " + aRestaurant.name)
+                            print("")
                             return aRestaurant
                         }
                     }
                 }
                 
-                println("\(self.name) can't find a restaurant that fits his or her preferences.")
-                println()
+                print("\(self.name) can't find a restaurant that fits his or her preferences.")
+                print("")
                 return nil
             }
             else
             {
-                println("\(self.name) doesn't care where we go to eat.")
-                println()
+                print("\(self.name) doesn't care where we go to eat.")
+                print("")
 
             }
         }

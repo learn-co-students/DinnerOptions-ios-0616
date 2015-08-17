@@ -61,7 +61,7 @@ class Restaurant: NSObject {
                 }
                
                 else {
-                    println("We are all out of the ingredients to make \(menuItem.name). You may wish to order something else.")
+                    print("We are all out of the ingredients to make \(menuItem.name). You may wish to order something else.")
                 }
             }
         }
@@ -79,7 +79,7 @@ class Restaurant: NSObject {
                 
                 var weServeIt = false
 
-                for (item,price) in tempMenu {
+                for (item, _) in tempMenu {
                     if (item.name == myFood) {
                         tableOrder.append(item)
                         weServeIt = true
@@ -87,7 +87,7 @@ class Restaurant: NSObject {
                 }
                 
                 if weServeIt == false {
-                    println("Sorry, we don't serve \(myFood)")
+                    print("Sorry, we don't serve \(myFood)")
                 }
             }
         }
