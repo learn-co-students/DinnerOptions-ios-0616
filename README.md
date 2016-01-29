@@ -193,4 +193,4 @@ You may also find this little bit of code helpful at some point...
 There should be a retain cycle in the code you just wrote (if you didn't already remove it.) Look up online how to easily remove it (Hint: It should require just adding one word to your code, and the word is not "weak".)
 
 
-<a href='https://learn.co/lessons/DinnerOptions' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/DinnerOptions' title='Dinner Options'>Dinner Options</a> on Learn.co and start learning to code for free.</p>
