@@ -18,100 +18,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.generateTestData()
+        var table10Order = ["Pea Soup", "Pea Soup", "Pea Soup", "Pea Soup", "Grilled Cheese", "Tuna on Toast"]
         
-        for person in self.people {
-            if let restaurant = checkMenuForPreferredRestaurantOf(person) {
-                restaurants.append(restaurant)
-            }
-        }
+        var table5Order = ["Vegetable Soup", "Vegetable Soup", "Grilled Cheese"]
         
+        var table2Order = ["Grilled Cheese", "Grilled Cheese"]
         
-        let table10Order = ["Pea Soup", "Pea Soup", "Pea Soup", "Pea Soup", "Grilled Cheese", "Tuna on Toast"]
-        let table5Order = ["Vegetable Soup", "Vegetable Soup", "Grilled Cheese"]
-        let table2Order = ["Grilled Cheese", "Grilled Cheese"]
-        let table3Order = ["Grilled Cheese", "Vegetable Soup", "Vegetable Soup", "Vegetable Soup"]
-        
-        let restaurant = restaurants[1]
-        
-        restaurant.place(table10Order, tableNumber: 10)
-        restaurant.place(table5Order, tableNumber: 5)
-        restaurant.place(table2Order, tableNumber: 2)
-        restaurant.place(table3Order, tableNumber: 3)
-        
-        restaurant.makeOrderFor(10)
-        restaurant.makeOrderFor(5)
-        restaurant.makeOrderFor(2)
-        
-        if let cheeseSupply = restaurant.supplies["Cheese"] {
-            restaurant.supplies["Cheese"] = cheeseSupply + 2
-        }
-        
-        restaurant.makeOrderFor(3)
+        var table3Order = ["Grilled Cheese", "Vegetable Soup", "Vegetable Soup", "Vegetable Soup"]
         
         // Override point for customization after application launch.
         return true
     }
 
-    func checkMenuForPreferredRestaurantOf(Diner : Person) -> Restaurant? {
-        
-       let restaurant = Diner.choose(self.restaurants);
-    
-        if let menu = restaurant?.menu {
-            print("Their menu includes:")
-            var count = 0
-            for (item, _) in menu {
-                count++
-                print("\(count)) " + item.name)
-            }
-            print("")
-        }
-        
-        return restaurant
-    }
-    
     func generateTestData() {
         
-        let alice = Person(name: "Alice", cuisinePreferences: ["French", "Italian", "American"])
+        var alice = Person(name: "Alice", cuisinePreferences: ["French", "Italian", "American"])
         
-        let grilledCheese = MenuItem(name: "Grilled Cheese", recipe: ["Cheese" : 2, "Bread": 2])
-        let vegetableSoup = MenuItem(name: "Vegetable Soup", recipe: ["Beefstake Tomato" : 2, "White Onion" : 1, "8 oz can lima beans" : 1, "Idaho Potato": 1, "Garlic clove": 1])
-        let alicesMenu = [grilledCheese: 8.99, vegetableSoup: 4.99]
+        var grilledCheese = MenuItem(name: "Grilled Cheese", recipe: ["Cheese" : 2, "Bread": 2])
+        var vegetableSoup = MenuItem(name: "Vegetable Soup", recipe: ["Beefstake Tomato" : 2, "White Onion" : 1, "8 oz can lima beans" : 1, "Idaho Potato": 1, "Garlic clove": 1])
+        var alicesMenu = [grilledCheese: 8.99, vegetableSoup: 4.99]
         
         let alicesRestaurant = Restaurant(name: "Alice's Restaurant", cuisine: "American", owner: alice)
         
         alicesRestaurant.supplies = ["Cheese": 10, "Bread": 7, "Beefstake Tomato": 9, "White Onion" : 3, "8 oz can lima beans" : 3, "Idaho Potato" : 10, "Garlic clove" : 16];
-        alice.restaurantOwned = alicesRestaurant        
+        alice.restaurantOwned = alicesRestaurant
         alicesRestaurant.menu = alicesMenu
         
-        let tom = Person(name: "Tom")
+        var tom = Person(name: "Tom")
         
-        let tunaSandwich = MenuItem(name: "Tuna on Toast", recipe: ["Tuna": 1, "Bread" : 2, "Lettuce" : 2])
+        var tunaSandwich = MenuItem(name: "Tuna on Toast", recipe: ["Tuna": 1, "Bread" : 2, "Lettuce" : 2])
         
-        let peaSoup = MenuItem(name: "Pea Soup", recipe: ["Peas": 1, "Soup" : 2])
+        var peaSoup = MenuItem(name: "Pea Soup", recipe: ["Peas": 1, "Soup" : 2])
         
         let tomsRestaurant = Restaurant(name: "Tom's Restaurant", cuisine: "Coffee", owner: tom)
         
         tom.restaurantOwned = tomsRestaurant
-        let tomsMenu = [tunaSandwich: 10.99, peaSoup: 5.99]
+        var tomsMenu = [tunaSandwich: 10.99, peaSoup: 5.99]
         
         tomsRestaurant.menu = tomsMenu
         
         tomsRestaurant.supplies = ["Tuna" : 3, "Bread" : 12, "Lettuce": 4, "Peas" : 5, "Soup" : 11]
         
-        let george = Person(name: "George", cuisinePreferences: ["Coffee", "American"])
+        var george = Person(name: "George", cuisinePreferences: ["Coffee", "American"])
         
-        let jerry = Person(name: "Jerry", cuisinePreferences: ["French", "American"])
+        var jerry = Person(name: "Jerry", cuisinePreferences: ["French", "American"])
         
-        let elaine = Person(name: "Elaine", cuisinePreferences: ["Spanish", "French"])
+        var elaine = Person(name: "Elaine", cuisinePreferences: ["Spanish", "French"])
         
-        let newman = Person(name: "Newman")
+        var newman = Person(name: "Newman")
         
         self.people = [elaine, jerry, george, tom, alice, newman]
         self.restaurants = [tomsRestaurant, alicesRestaurant]
         
     }
-
     
     
     func applicationWillResignActive(application: UIApplication) {
