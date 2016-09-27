@@ -9,11 +9,11 @@
 
 ####Part 1
 
-Create a `MenuItem` object which has the following properties:
+Create a `MenuItem` class which has the following properties:
 
-1) a name, which can change
+1) a name, which can change and is a string
 
-2) a recipe, which is really just a dictionary of ingredients (strings) as keys and the associated amount of that ingredient needed as values.
+2) a recipe, which is really just a dictionary of ingredients (strings) as keys and the associated amount of that ingredient needed as values (ints).
 
 Neither the name or recipe for a `MenuItem` can ever be nil.
 
@@ -25,15 +25,15 @@ Write a designated initializer for a MenuItem.
 
 Create a `Restaurant` class which has the following properties:
 
-1) the `name` of the restaurant
+1) the `name` of the restaurant, a string
 
-2) the `cuisine` of the restaurant
+2) the `cuisine` of the restaurant, a string
 
-3) the `supplies` on hand at the restaurant, which is a `Dictionary` of ingredients (strings) as keys and their amounts as values
+3) the `supplies` on hand at the restaurant, which is a `Dictionary` of ingredients (strings) as keys and their amounts as values (ints)
 
-4) the `owner` of the restaurant, which is a `Person` object
+4) the `owner` of the restaurant, which is a `Person` object(we'll create the person class in step 3)
 
-5) the `menu` for the restaurant 
+5) the `menu` for the restaurant, an array of menu items
 
 6) the restaurants current list of `orders`, which even if there are none should exist. This is a dictionary where the key is the table number and the value is an array of `MenuItem` objects.
 
@@ -53,9 +53,9 @@ Now write methods that do the following:
 
 Create a `Person` object which has the following properties:
 
-1) the person's `name`
+1) the person's `name`, a string
 
-2) the person's `cuisinePreferences` (an `Array` of `String` objects)
+2) the person's `cuisinePreferences` (an array of strings)
 
 3) the person's `restaurantOwned` (a `Restaurant` if they own one)
 
