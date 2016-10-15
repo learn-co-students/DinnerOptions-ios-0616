@@ -9,17 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
+    
+//      let restaurant = Restaurant()       var callingPlaceAnOrder = restaurant.placeAnOrder(["Grilled Cheese", "Falafel on Rice", "Vegetable Soup", "Tuna on Toast", "Pea Soup", "Salad"], 21)        print("Your order \(placeAnOrder) was successfully received.")
+//        var callingMakeAnOrder = restaurant.makeAnOrder(placeAnOrder())
+}
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
